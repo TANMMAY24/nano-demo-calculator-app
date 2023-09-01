@@ -20,11 +20,11 @@ def add():
         JSON object: A JSON object with the following properties:
             result (number): The result of the summation.
     """
-    # data = json.loads(request.data)
+    data = json.loads(request.data)
     first = data['first']
     second = data['second']
     result = first + second
-    # return json.dumps({'result': result})
+    return json.dumps({'result': result})
     return result
 
 @app.route("/calculator/subtract", methods=['POST'])
@@ -40,10 +40,12 @@ def subtract():
         JSON object: A JSON object with the following properties:
             result (number): The result of the subtraction.
     """
+    data = json.loads(request.data)
     
     first = data['first']
     second = data['second']
     result = first - second
+    return json.dumps({'result': result})
     return result
 if __name__ == '__main__':
     app.run(port=8080,host='0.0.0.0')
